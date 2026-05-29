@@ -48,9 +48,9 @@ export function ProductDetailPage({ params }: ProductDetailPageProps) {
         <Link
           href="/"
           transitionTypes={["nav-back"]}
-          className={buttonVariants({ variant: "ghost", size: "sm" })}
+          className={buttonVariants({ variant: "default" })}
         >
-          ← Voltar ao catálogo
+          Voltar
         </Link>
       </nav>
 

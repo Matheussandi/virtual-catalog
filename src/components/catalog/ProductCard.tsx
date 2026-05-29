@@ -25,25 +25,25 @@ type ProductCardProps = {
 
 export function ProductCard({ product, categories }: ProductCardProps) {
   return (
-    <Card className="flex h-full flex-col overflow-hidden">
+    <Card className="flex h-full flex-col gap-0 overflow-hidden py-0">
       <Link
         href={`/produtos/${product.id}`}
         transitionTypes={["nav-forward"]}
-        className="block"
+        className="block shrink-0"
       >
         <ViewTransition name={`product-image-${product.id}`} share="morph">
-          <div className="relative aspect-[4/3] w-full bg-muted">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
             <Image
               src={product.imageUrl}
               alt={product.name}
               fill
-              className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+              className="object-cover object-center transition-transform duration-300 hover:scale-[1.03]"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         </ViewTransition>
       </Link>
-      <CardHeader className="gap-2">
+      <CardHeader className="gap-2 px-4 pt-4">
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="text-lg leading-tight">{product.name}</CardTitle>
           <Badge variant="secondary">
@@ -54,7 +54,7 @@ export function ProductCard({ product, categories }: ProductCardProps) {
           {product.description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="mt-auto">
+      <CardContent className="mt-auto px-4">
         <p className="text-xl font-semibold">{formatPriceBRL(product.price)}</p>
       </CardContent>
       <CardFooter>

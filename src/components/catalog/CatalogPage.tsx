@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { useProducts } from "@/context/ProductsProvider";
 import { filterByCategory } from "@/lib/products";
 import type { ProductFormSchema } from "@/lib/validations/product";
-import type { Product } from "@/types/product";
 
 export function CatalogPage() {
   const { products, categories, addProduct } = useProducts();
@@ -18,23 +17,13 @@ export function CatalogPage() {
     null,
   );
   const [formOpen, setFormOpen] = useState(false);
-  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   const filteredProducts = useMemo(
     () => filterByCategory(products, selectedCategoryId),
     [products, selectedCategoryId],
   );
 
-  const handleOpenCreate = () => {
-    setEditingProduct(null);
-    setFormOpen(true);
-  };
-
   const handleFormSubmit = (values: ProductFormSchema) => {
-    if (editingProduct) {
-      updateProduct(editingProduct.id, values);
-      return;
-    }
     addProduct(values);
   };
 
@@ -48,7 +37,7 @@ export function CatalogPage() {
             memória. Os dados voltam ao estado inicial ao recarregar a página.
           </p>
         </div>
-        <Button type="button" onClick={handleOpenCreate}>
+        <Button type="button" onClick={() => setFormOpen(true)}>
           Novo produto
         </Button>
       </header>
@@ -80,7 +69,6 @@ export function CatalogPage() {
         open={formOpen}
         onOpenChange={setFormOpen}
         categories={categories}
-        product={editingProduct}
         onSubmit={handleFormSubmit}
       />
 
