@@ -1,0 +1,47 @@
+---
+description: Modelo de domínio do catálogo — Product, Category, regras de negócio e fluxos CRUD em memória
+alwaysApply: false
+---
+
+# Domínio do catálogo
+
+## Tipos canônicos
+
+Consulte `@src/types/product.ts`:
+
+- `Category`: `id`, `name`
+- `Product`: `id`, `name`, `description`, `price`, `categoryId`, `imageUrl`
+- `ProductFormValues`: campos do formulário (sem `id`)
+
+## Categorias
+
+IDs fixos do seed (`@src/data/categories.seed.ts`):
+
+- `eletronicos`, `roupas`, `casa`
+
+Novos produtos devem usar um `categoryId` existente no seed de categorias.
+
+## Regras de negócio
+
+- Preço: número positivo, exibido em BRL
+- Nome: 2–80 caracteres; descrição: 10–500 caracteres
+- `imageUrl`: URL válida (validação em `@src/lib/validations/product.ts`)
+- IDs de produto novos: `createProductId()` em `@src/lib/products.ts`
+
+## Fluxos
+
+| Ação | Onde |
+|------|------|
+| Listar / filtrar | `CatalogPage` + `filterByCategory` |
+| Criar | `addProduct` no Provider |
+| Editar | `updateProduct(id, values)` |
+| Excluir | `removeProduct(id)` com confirmação |
+| Reset | `resetProducts()` reimporta o seed |
+
+## Componentes principais
+
+- `@src/components/catalog/CatalogPage.tsx` — orquestração
+- `@src/components/catalog/ProductFormDialog.tsx` — criar/editar
+- `@src/components/catalog/DeleteProductDialog.tsx` — exclusão
+
+Não duplicar lógica de filtro ou formatação fora de `src/lib/`.

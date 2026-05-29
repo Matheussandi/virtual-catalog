@@ -1,0 +1,35 @@
+---
+description: Padrões de componentes React e shadcn/ui para o catálogo
+globs: src/components/**/*.tsx
+alwaysApply: false
+---
+
+# UI React — componentes
+
+## Estrutura
+
+- Componentes de catálogo em `src/components/catalog/` com **named exports**
+- Marcar interatividade com `"use client"` apenas quando necessário (estado, eventos, hooks)
+- Reutilizar primitivos de `@/components/ui/*` (shadcn) em vez de HTML cru estilizado
+
+## Acessibilidade
+
+- `Label` associado a cada `Input` / `Textarea` via `htmlFor` + `id`
+- Botões de ação com texto descritivo em português ("Editar", "Excluir", não só ícones)
+- Imagens de produto: `alt` com o nome do produto (`ProductCard`)
+
+## Imagens
+
+- Usar `next/image` para URLs do seed (domínio configurado em `next.config.ts`)
+- Manter `aspect-[4/3]` no card para consistência visual
+
+## Formulários
+
+- react-hook-form + zodResolver + schema em `@src/lib/validations/product.ts`
+- Exibir erros abaixo do campo com `text-destructive`
+
+## Estilo
+
+- Layout responsivo: grade `sm:grid-cols-2 lg:grid-cols-3` em `ProductGrid`
+- Tokens do tema via classes Tailwind (`bg-muted`, `text-muted-foreground`)
+- Evitar cores hardcoded fora do design system

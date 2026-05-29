@@ -1,0 +1,36 @@
+---
+description: Convenções globais do catálogo virtual e do laboratório Cursor
+alwaysApply: true
+---
+
+# Convenções do projeto
+
+## Stack
+
+- Next.js 16+ com App Router (`src/app/`)
+- TypeScript, Tailwind CSS, shadcn/ui
+- Dados **mockados** em `src/data/` — **sem API**, sem Route Handlers, sem banco
+
+## Idioma e UX
+
+- Interface e mensagens de erro em **português (BR)**
+- Formatação de preço com `formatPriceBRL` em `@src/lib/products.ts`
+
+## Estado
+
+- CRUD em memória via `ProductsProvider` (`@src/context/ProductsProvider.tsx`)
+- Seed inicial: `@src/data/products.seed.ts` e `@src/data/categories.seed.ts`
+- Recarregar a página restaura o seed; use `resetProducts` para o mesmo efeito na sessão
+
+## Estrutura de pastas
+
+- `src/components/catalog/` — UI do catálogo
+- `src/components/ui/` — componentes shadcn (não editar estilo base sem necessidade)
+- `src/lib/validations/` — schemas Zod
+- `docs/cursor/` — documentação educacional do Cursor
+
+## Ao implementar mudanças
+
+- Preferir diffs mínimos e reutilizar componentes existentes
+- Consultar ADRs em `docs/decisions/` antes de introduzir API ou persistência
+- Documentar decisões novas com um ADR numerado

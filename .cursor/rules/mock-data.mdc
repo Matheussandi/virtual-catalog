@@ -1,0 +1,28 @@
+---
+description: Convenções para dados mockados e seeds — sem API nem persistência externa
+globs: src/data/**
+alwaysApply: false
+---
+
+# Dados mockados
+
+## Fonte da verdade inicial
+
+- Categorias: `@src/data/categories.seed.ts` — array `categoriesSeed`
+- Produtos: `@src/data/products.seed.ts` — array `productsSeed`
+
+## O que fazer
+
+- Adicionar novos itens de demonstração nos arrays seed quando precisar enriquecer o catálogo inicial
+- Manter `id` de categoria estável (slug em minúsculas, sem espaços)
+- Usar URLs de imagem públicas já permitidas em `next.config.ts` (`images.unsplash.com`)
+
+## O que não fazer
+
+- Criar `app/api/*`, Route Handlers ou `fetch` para backend
+- Adicionar `localStorage`, cookies ou banco para persistir produtos (fora do escopo — ver ADR-002)
+- Importar seeds diretamente em componentes de UI — consumir via `useProducts()`
+
+## Sincronização com o Provider
+
+O `ProductsProvider` clona o seed na montagem. Alterações em runtime não alteram os arquivos `.seed.ts`. Para refletir mudanças no seed padrão, edite os arquivos e documente no changelog ou ADR se for decisão arquitetural.
