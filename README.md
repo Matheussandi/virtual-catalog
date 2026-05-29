@@ -2,6 +2,17 @@
 
 Aplicação de catálogo de produtos em **Next.js 16** com dados mockados e CRUD em memória, pensada para estudar **Cursor Rules**, **Skills**, **MCP** e **context engineering** com código real.
 
+## Apresentação do projeto
+
+Demonstração automatizada (~30s): listagem, filtro em todas as categorias, cadastro de um produto e visualização do detalhe. O vídeo usa um **cursor destacado** injetado na página — o Playwright não grava o cursor do sistema operacional, apenas a janela do navegador.
+
+<video src="docs/test-recordings/catalog-e2e.webm" controls width="100%">
+  Seu navegador não suporta vídeo incorporado.
+  <a href="docs/test-recordings/catalog-e2e.webm">Baixar demonstração (.webm)</a>
+</video>
+
+Para gravar novamente (mais lento, com cursor visível): `npm run test:e2e:video`
+
 ## Funcionalidades
 
 - Visualizar produtos em grade responsiva
@@ -31,6 +42,8 @@ Abra [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run lint
 npm run build
+npm run test:e2e          # testes E2E (Playwright) + vídeo em test-results/
+npm run test:e2e:video    # idem e copia gravação para docs/test-recordings/
 ```
 
 ## Estudar com o Cursor
