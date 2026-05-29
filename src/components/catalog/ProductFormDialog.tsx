@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
+import { RequiredLabel } from "@/components/catalog/RequiredLabel";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,7 +15,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -27,6 +27,7 @@ import {
   productFormSchema,
   type ProductFormSchema,
 } from "@/lib/validations/product";
+import { cn } from "@/lib/utils";
 import type { Category, Product } from "@/types/product";
 
 type ProductFormDialogProps = {
@@ -64,6 +65,7 @@ export function ProductFormDialog({
   } = useForm<ProductFormSchema>({
     resolver: zodResolver(productFormSchema),
     defaultValues,
+    mode: "onBlur",
   });
 
   const categoryId = watch("categoryId");
@@ -106,20 +108,36 @@ export function ProductFormDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleFormSubmit} className="space-y-4">
+        <form onSubmit={handleFormSubmit} className="space-y-4" noValidate>
           <div className="space-y-2">
-            <Label htmlFor="name">Nome</Label>
-            <Input id="name" {...register("name")} />
+            <RequiredLabel htmlFor="name">Nome</RequiredLabel>
+            <Input
+              id="name"
+              autoComplete="off"
+              aria-required="true"
+              aria-invalid={Boolean(errors.name)}
+              className={cn(errors.name && "border-destructive")}
+              {...register("name")}
+            />
             {errors.name && (
-              <p className="text-sm text-destructive">{errors.name.message}</p>
+              <p className="text-sm text-destructive" role="alert">
+                {errors.name.message}
+              </p>
             )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Descrição</Label>
-            <Textarea id="description" rows={3} {...register("description")} />
+            <RequiredLabel htmlFor="description">Descrição</RequiredLabel>
+            <Textarea
+              id="description"
+              rows={3}
+              aria-required="true"
+              aria-invalid={Boolean(errors.description)}
+              className={cn(errors.description && "border-destructive")}
+              {...register("description")}
+            />
             {errors.description && (
-              <p className="text-sm text-destructive">
+              <p className="text-sm text-destructive" role="alert">
                 {errors.description.message}
               </p>
             )}
@@ -127,30 +145,42 @@ export function ProductFormDialog({
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="price">Preço (R$)</Label>
+              <RequiredLabel htmlFor="price">Preço (R$)</RequiredLabel>
               <Input
                 id="price"
                 type="number"
                 step="0.01"
                 min="0"
+                inputMode="decimal"
+                aria-required="true"
+                aria-invalid={Boolean(errors.price)}
+                className={cn(errors.price && "border-destructive")}
                 {...register("price", { valueAsNumber: true })}
               />
               {errors.price && (
-                <p className="text-sm text-destructive">
+                <p className="text-sm text-destructive" role="alert">
                   {errors.price.message}
                 </p>
               )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="categoryId">Categoria</Label>
+              <RequiredLabel htmlFor="categoryId">Categoria</RequiredLabel>
               <Select
                 value={categoryId}
                 onValueChange={(value) =>
                   setValue("categoryId", value ?? "", { shouldValidate: true })
                 }
               >
-                <SelectTrigger id="categoryId" className="w-full">
+                <SelectTrigger
+                  id="categoryId"
+                  className={cn(
+                    "w-full",
+                    errors.categoryId && "border-destructive",
+                  )}
+                  aria-required="true"
+                  aria-invalid={Boolean(errors.categoryId)}
+                >
                   <SelectValue placeholder="Selecione uma categoria" />
                 </SelectTrigger>
                 <SelectContent>
@@ -162,7 +192,7 @@ export function ProductFormDialog({
                 </SelectContent>
               </Select>
               {errors.categoryId && (
-                <p className="text-sm text-destructive">
+                <p className="text-sm text-destructive" role="alert">
                   {errors.categoryId.message}
                 </p>
               )}
@@ -170,16 +200,25 @@ export function ProductFormDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="imageUrl">URL da imagem</Label>
-            <Input id="imageUrl" {...register("imageUrl")} />
+            <RequiredLabel htmlFor="imageUrl">URL da imagem</RequiredLabel>
+            <Input
+              id="imageUrl"
+              type="url"
+              placeholder="https://..."
+              autoComplete="off"
+              aria-required="true"
+              aria-invalid={Boolean(errors.imageUrl)}
+              className={cn(errors.imageUrl && "border-destructive")}
+              {...register("imageUrl")}
+            />
             {errors.imageUrl && (
-              <p className="text-sm text-destructive">
+              <p className="text-sm text-destructive" role="alert">
                 {errors.imageUrl.message}
               </p>
             )}
           </div>
 
-          <DialogFooter>
+          <DialogFooter className="gap-2 sm:gap-0">
             <Button
               type="button"
               variant="outline"

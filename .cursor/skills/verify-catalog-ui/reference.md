@@ -1,6 +1,18 @@
 # Referência — verify-catalog-ui
 
-## Ferramentas MCP browser (exemplos)
+## Servidores MCP deste repo
+
+| Servidor | Uso no laboratório |
+|----------|-------------------|
+| **playwright** | E2E do catálogo (config em `mcp.json.example`) |
+| **github** | Issues, PRs, repositório (requer `GITHUB_PERSONAL_ACCESS_TOKEN`) |
+| **browser** (IDE) | Alternativa ao Playwright |
+
+## Ferramentas Playwright MCP (exemplos)
+
+Consulte as tools disponíveis em Settings → MCP após iniciar o servidor. Em geral: navegar, snapshot da página, clicar, preencher formulários.
+
+## Ferramentas browser integrado (exemplos)
 
 | Objetivo | Ferramenta |
 |----------|------------|
@@ -8,7 +20,6 @@
 | Estrutura da página | `browser_snapshot` |
 | Clicar aba / botão | `browser_click` (ref do snapshot) |
 | Digitar em formulário | `browser_fill` ou `browser_type` |
-| Screenshot | `browser_take_screenshot` |
 
 ## Ordem recomendada (lock)
 

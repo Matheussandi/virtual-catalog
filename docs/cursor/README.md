@@ -28,7 +28,7 @@ Registros em [../decisions/](../decisions/) (ADRs).
 .cursor/
   rules/          # *.mdc
   skills/         # */SKILL.md
-  mcp.json.example
+  mcp.json.example   # GitHub + Playwright
 AGENTS.md         # instruções simples na raiz
 src/components/AGENTS.md  # instruções aninhadas
 ```

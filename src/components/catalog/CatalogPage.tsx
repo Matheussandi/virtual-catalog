@@ -12,13 +12,7 @@ import type { ProductFormSchema } from "@/lib/validations/product";
 import type { Product } from "@/types/product";
 
 export function CatalogPage() {
-  const {
-    products,
-    categories,
-    addProduct,
-    updateProduct,
-    resetProducts,
-  } = useProducts();
+  const { products, categories, addProduct } = useProducts();
 
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null,
@@ -54,14 +48,9 @@ export function CatalogPage() {
             memória. Os dados voltam ao estado inicial ao recarregar a página.
           </p>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" onClick={resetProducts}>
-            Restaurar dados iniciais
-          </Button>
-          <Button type="button" onClick={handleOpenCreate}>
-            Novo produto
-          </Button>
-        </div>
+        <Button type="button" onClick={handleOpenCreate}>
+          Novo produto
+        </Button>
       </header>
 
       <section className="space-y-4">

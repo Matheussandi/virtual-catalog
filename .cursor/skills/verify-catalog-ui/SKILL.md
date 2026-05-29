@@ -5,13 +5,16 @@ description: Valida o catálogo virtual no navegador com MCP browser — filtro 
 
 # Verificar UI do catálogo (MCP browser)
 
-Use o servidor MCP **browser** (Cursor IDE) para validar o catálogo localmente.
+Use MCP de browser para validar o catálogo localmente:
+
+- **Playwright** (recomendado neste repo — ver `.cursor/mcp.json.example`)
+- **browser** integrado do Cursor IDE (Settings → MCP)
 
 ## Pré-requisitos
 
 1. Servidor de desenvolvimento: `npm run dev` (porta 3000)
-2. MCP browser habilitado no Cursor (Settings → MCP)
-3. Opcional: copiar `.cursor/mcp.json.example` para `.cursor/mcp.json` se precisar de config explícita
+2. Copiar `.cursor/mcp.json.example` → `.cursor/mcp.json` e habilitar **playwright** (ou browser do IDE)
+3. GitHub MCP é opcional para este teste (útil para issues/PRs do projeto)
 
 ## Passos
 
@@ -26,16 +29,17 @@ Use o servidor MCP **browser** (Cursor IDE) para validar o catálogo localmente.
 2. `browser_snapshot` — contagem de produtos deve diminuir
 3. Clicar **Todas** — lista completa retorna
 
-### 3. Criar produto
+### 3. Detalhe do produto
 
-1. Clicar **Novo produto**
-2. Preencher nome, descrição, preço, categoria, URL de imagem válida
-3. Submeter — card novo aparece na grade
+1. Clicar **Ver detalhes** em um card
+2. Confirmar morph/transição e conteúdo na rota `/produtos/[id]`
+3. **Editar produto** — salvar — nome atualizado
+4. **Excluir produto** — confirmar — redirecionar ao catálogo
 
-### 4. Editar e excluir
+### 4. Criar produto (listagem)
 
-1. **Editar** em um card — alterar nome — **Salvar alterações**
-2. **Excluir** — confirmar no dialog — card some
+1. Voltar ao catálogo
+2. **Novo produto** — preencher formulário — card novo na grade
 
 ### 5. Reset
 

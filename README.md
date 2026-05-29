@@ -7,7 +7,6 @@ Aplicação de catálogo de produtos em **Next.js 16** com dados mockados e CRUD
 - Visualizar produtos em grade responsiva
 - Filtrar por categoria (Eletrônicos, Roupas, Casa)
 - Adicionar, editar e excluir produtos
-- Restaurar dados iniciais (seed)
 - Ao recarregar a página (F5), o catálogo volta ao seed original
 
 ## Stack
@@ -49,7 +48,7 @@ npm run build
 
 1. **Rules:** abra `ProductCard.tsx` e peça um badge "Promoção"; observe a rule `react-ui`.
 2. **Skills:** no chat, `/catalog-crud adicionar campo opcional ao produto`.
-3. **MCP:** com `npm run dev`, use `/verify-catalog-ui` para testar filtro e CRUD no browser.
+3. **MCP:** copie `.cursor/mcp.json.example` → `.cursor/mcp.json` (GitHub + Playwright); com `npm run dev`, use `/verify-catalog-ui` para testar o catálogo.
 4. **Context:** compare um prompt com e sem `@src/types/product.ts`.
 
 ## Estrutura do projeto
