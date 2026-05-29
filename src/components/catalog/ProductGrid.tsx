@@ -6,16 +6,9 @@ import type { Category, Product } from "@/types/product";
 type ProductGridProps = {
   products: Product[];
   categories: Category[];
-  onEdit: (product: Product) => void;
-  onDelete: (product: Product) => void;
 };
 
-export function ProductGrid({
-  products,
-  categories,
-  onEdit,
-  onDelete,
-}: ProductGridProps) {
+export function ProductGrid({ products, categories }: ProductGridProps) {
   if (products.length === 0) {
     return (
       <div className="rounded-lg border border-dashed p-12 text-center">
@@ -31,12 +24,7 @@ export function ProductGrid({
     <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => (
         <li key={product.id}>
-          <ProductCard
-            product={product}
-            categories={categories}
-            onEdit={onEdit}
-            onDelete={onDelete}
-          />
+          <ProductCard product={product} categories={categories} />
         </li>
       ))}
     </ul>

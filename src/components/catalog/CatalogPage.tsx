@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 
 import { CategoryFilter } from "@/components/catalog/CategoryFilter";
-import { DeleteProductDialog } from "@/components/catalog/DeleteProductDialog";
 import { ProductFormDialog } from "@/components/catalog/ProductFormDialog";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { Button } from "@/components/ui/button";
@@ -18,7 +17,6 @@ export function CatalogPage() {
     categories,
     addProduct,
     updateProduct,
-    removeProduct,
     resetProducts,
   } = useProducts();
 
@@ -26,9 +24,7 @@ export function CatalogPage() {
     null,
   );
   const [formOpen, setFormOpen] = useState(false);
-  const [deleteOpen, setDeleteOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
-  const [deletingProduct, setDeletingProduct] = useState<Product | null>(null);
 
   const filteredProducts = useMemo(
     () => filterByCategory(products, selectedCategoryId),
@@ -40,29 +36,12 @@ export function CatalogPage() {
     setFormOpen(true);
   };
 
-  const handleOpenEdit = (product: Product) => {
-    setEditingProduct(product);
-    setFormOpen(true);
-  };
-
-  const handleOpenDelete = (product: Product) => {
-    setDeletingProduct(product);
-    setDeleteOpen(true);
-  };
-
   const handleFormSubmit = (values: ProductFormSchema) => {
     if (editingProduct) {
       updateProduct(editingProduct.id, values);
       return;
     }
     addProduct(values);
-  };
-
-  const handleConfirmDelete = () => {
-    if (deletingProduct) {
-      removeProduct(deletingProduct.id);
-      setDeletingProduct(null);
-    }
   };
 
   return (
@@ -105,8 +84,6 @@ export function CatalogPage() {
         <ProductGrid
           products={filteredProducts}
           categories={categories}
-          onEdit={handleOpenEdit}
-          onDelete={handleOpenDelete}
         />
       </section>
 
@@ -118,12 +95,6 @@ export function CatalogPage() {
         onSubmit={handleFormSubmit}
       />
 
-      <DeleteProductDialog
-        open={deleteOpen}
-        onOpenChange={setDeleteOpen}
-        product={deletingProduct}
-        onConfirm={handleConfirmDelete}
-      />
     </div>
   );
 }

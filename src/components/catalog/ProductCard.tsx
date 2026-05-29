@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ViewTransition } from "react";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Card,
   CardContent,
@@ -18,27 +21,28 @@ import type { Category, Product } from "@/types/product";
 type ProductCardProps = {
   product: Product;
   categories: Category[];
-  onEdit: (product: Product) => void;
-  onDelete: (product: Product) => void;
 };
 
-export function ProductCard({
-  product,
-  categories,
-  onEdit,
-  onDelete,
-}: ProductCardProps) {
+export function ProductCard({ product, categories }: ProductCardProps) {
   return (
     <Card className="flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[4/3] w-full bg-muted">
-        <Image
-          src={product.imageUrl}
-          alt={product.name}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
+      <Link
+        href={`/produtos/${product.id}`}
+        transitionTypes={["nav-forward"]}
+        className="block"
+      >
+        <ViewTransition name={`product-image-${product.id}`} share="morph">
+          <div className="relative aspect-[4/3] w-full bg-muted">
+            <Image
+              src={product.imageUrl}
+              alt={product.name}
+              fill
+              className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </div>
+        </ViewTransition>
+      </Link>
       <CardHeader className="gap-2">
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="text-lg leading-tight">{product.name}</CardTitle>
@@ -53,23 +57,14 @@ export function ProductCard({
       <CardContent className="mt-auto">
         <p className="text-xl font-semibold">{formatPriceBRL(product.price)}</p>
       </CardContent>
-      <CardFooter className="gap-2">
-        <Button
-          type="button"
-          variant="outline"
-          className="flex-1"
-          onClick={() => onEdit(product)}
+      <CardFooter>
+        <Link
+          href={`/produtos/${product.id}`}
+          transitionTypes={["nav-forward"]}
+          className={cn(buttonVariants({ variant: "default" }), "w-full")}
         >
-          Editar
-        </Button>
-        <Button
-          type="button"
-          variant="destructive"
-          className="flex-1"
-          onClick={() => onDelete(product)}
-        >
-          Excluir
-        </Button>
+          Ver detalhes
+        </Link>
       </CardFooter>
     </Card>
   );

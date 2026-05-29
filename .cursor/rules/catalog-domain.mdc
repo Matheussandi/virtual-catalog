@@ -40,8 +40,12 @@ Novos produtos devem usar um `categoryId` existente no seed de categorias.
 
 ## Componentes principais
 
-- `@src/components/catalog/CatalogPage.tsx` — orquestração
+- `@src/components/catalog/CatalogPage.tsx` — listagem e filtro
+- `@src/components/catalog/ProductDetailPage.tsx` — detalhe em `/produtos/[id]` (editar/excluir)
+- `@src/components/catalog/ProductCard.tsx` — card com link "Ver detalhes"
 - `@src/components/catalog/ProductFormDialog.tsx` — criar/editar
 - `@src/components/catalog/DeleteProductDialog.tsx` — exclusão
+
+Navegação lista → detalhe usa [View Transitions](https://nextjs.org/docs/app/guides/view-transitions) (`ViewTransition` + `transitionTypes` no `Link`).
 
 Não duplicar lógica de filtro ou formatação fora de `src/lib/`.
