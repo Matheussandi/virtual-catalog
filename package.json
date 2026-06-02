@@ -11,7 +11,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
-    "test:e2e:video": "playwright test && cp test-results/catalog-*/video.webm docs/test-recordings/catalog-e2e.webm"
+    "test:e2e:video": "playwright test && bash scripts/copy-e2e-video.sh"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

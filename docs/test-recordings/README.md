@@ -4,7 +4,8 @@
 
 O vídeo exibido no [README](../../README.md) é gerado por este teste:
 
-**[catalog-e2e.webm](./catalog-e2e.webm)**
+- **[catalog-e2e.mp4](./catalog-e2e.mp4)** — embed no GitHub (MP4)
+- **[catalog-e2e.webm](./catalog-e2e.webm)** — gravação original do Playwright
 
 ### Cursor visível na gravação
 
@@ -23,7 +24,7 @@ O Playwright grava só o conteúdo do navegador, não o ponteiro do sistema. Par
 npm run test:e2e:video
 ```
 
-Copia o `.webm` mais recente para esta pasta.
+Copia o `.webm` e gera o `.mp4` via [`scripts/copy-e2e-video.sh`](../../scripts/copy-e2e-video.sh).
 
 ## Fluxo gravado (≤ 30s)
 
