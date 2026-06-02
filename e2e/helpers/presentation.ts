@@ -73,3 +73,24 @@ export async function moveAndFill(page: Page, locator: Locator, value: string) {
   await locator.fill(value);
   await pause(page, 150);
 }
+
+/** Rolagem suave até o fim da página (demo no detalhe do produto). */
+export async function scrollToBottom(page: Page) {
+  await page.evaluate(async () => {
+    const wait = (ms: number) =>
+      new Promise<void>((resolve) => setTimeout(resolve, ms));
+    const max = Math.max(
+      0,
+      document.documentElement.scrollHeight - window.innerHeight,
+    );
+    const steps = 10;
+    const step = max / steps;
+
+    for (let i = 1; i <= steps; i += 1) {
+      window.scrollTo({ top: step * i, behavior: "instant" });
+      await wait(45);
+    }
+    window.scrollTo({ top: max, behavior: "instant" });
+  });
+  await pause(page, 350);
+}

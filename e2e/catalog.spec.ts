@@ -5,6 +5,7 @@ import {
   moveAndClick,
   moveAndFill,
   pause,
+  scrollToBottom,
 } from "./helpers/presentation";
 
 const NEW_PRODUCT_NAME = "Produto Demo Vídeo";
@@ -69,6 +70,16 @@ test.describe("Catálogo virtual", () => {
       page.getByRole("heading", { name: NEW_PRODUCT_NAME }),
     ).toBeVisible();
     await expect(page.getByRole("button", { name: "Editar produto" })).toBeVisible();
-    await pause(page, 400);
+    await pause(page, 300);
+
+    await scrollToBottom(page);
+    await pause(page, 500);
+
+    await moveAndClick(page, page.getByRole("link", { name: "Voltar" }));
+    await expect(page).toHaveURL("/");
+    await expect(
+      page.getByRole("heading", { name: "Catálogo virtual" }),
+    ).toBeVisible();
+    await pause(page, 250);
   });
 });

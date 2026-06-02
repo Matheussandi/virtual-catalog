@@ -4,7 +4,7 @@
 
 O [README](../../README.md) exibe o vídeo com uma URL do GitHub (**não** com caminho relativo ao repositório):
 
-`https://github.com/user-attachments/assets/e80b0b53-c5e8-4b31-b341-ede9c7a82bb5`
+`https://github.com/user-attachments/assets/f09aeaa0-a67d-46fd-9fe6-f6ebcd43665d`
 
 O GitHub só embute MP4 no Markdown quando o arquivo é enviado pelo editor web (arrastar e soltar). Arquivos versionados em `docs/test-recordings/` servem como fonte local para esse upload.
 
@@ -48,5 +48,6 @@ Isso roda os testes, copia o `.webm` e gera o `.mp4` via [`scripts/copy-e2e-vide
 2. Filtro por **Todas**, **Eletrônicos**, **Roupas** e **Casa**
 3. **Novo produto** — cadastro de "Produto Demo Vídeo"
 4. **Ver detalhes** do produto recém-criado
+5. Rolagem até o fim da página, pausa e **Voltar** ao catálogo
 
 Código: [`e2e/catalog.spec.ts`](../../e2e/catalog.spec.ts)
