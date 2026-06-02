@@ -4,15 +4,13 @@ Aplicação de catálogo de produtos em **Next.js 16** com dados mockados e CRUD
 
 ## Apresentação do projeto
 
-Demonstração automatizada (~17s): listagem, filtro em todas as categorias, cadastro de um produto e visualização do detalhe. O Playwright grava só o navegador; o **cursor destacado** é injetado na página ([`e2e/helpers/presentation.ts`](e2e/helpers/presentation.ts)).
+Demonstração (~17s): listagem, filtros por categoria, novo produto e detalhe. Cursor destacado injetado pelo Playwright ([`e2e/helpers/presentation.ts`](e2e/helpers/presentation.ts)).
 
-<video src="docs/test-recordings/catalog-e2e.mp4" controls width="100%">
-  Seu navegador não suporta vídeo incorporado.
-  <a href="docs/test-recordings/catalog-e2e.mp4">Baixar demonstração (MP4)</a>
-  · <a href="docs/test-recordings/catalog-e2e.webm">WebM</a>
-</video>
+https://raw.githubusercontent.com/Matheussandi/virtual-catalog/main/docs/test-recordings/catalog-e2e.mp4
 
-Para regravar: `npm run test:e2e:video` (gera `.webm` e `.mp4` em [`docs/test-recordings/`](docs/test-recordings/)).
+Regravar: `npm run test:e2e:video`
+
+https://github.com/user-attachments/assets/e80b0b53-c5e8-4b31-b341-ede9c7a82bb5
 
 ## Funcionalidades
 

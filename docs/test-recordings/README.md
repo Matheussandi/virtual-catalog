@@ -4,7 +4,7 @@
 
 O vídeo exibido no [README](../../README.md) é gerado por este teste:
 
-- **[catalog-e2e.mp4](./catalog-e2e.mp4)** — embed no GitHub (MP4)
+- **[catalog-e2e.mp4](./catalog-e2e.mp4)** — exibido no README (URL `raw` no GitHub)
 - **[catalog-e2e.webm](./catalog-e2e.webm)** — gravação original do Playwright
 
 ### Cursor visível na gravação
