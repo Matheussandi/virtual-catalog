@@ -24,7 +24,7 @@ npm run dev              # http://localhost:3000
 npm run lint
 npm run build
 npm run test:e2e         # Playwright
-npm run test:e2e:video   # E2E + cópia para docs/test-recordings/
+npm run test:e2e:video   # E2E → docs/test-recordings/ (upload MP4 no README via GitHub)
 ```
 
 ## Stack

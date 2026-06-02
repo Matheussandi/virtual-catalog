@@ -6,11 +6,10 @@ Aplicação de catálogo de produtos em **Next.js 16** com dados mockados e CRUD
 
 Demonstração (~17s): listagem, filtros por categoria, novo produto e detalhe. Cursor destacado injetado pelo Playwright ([`e2e/helpers/presentation.ts`](e2e/helpers/presentation.ts)).
 
-https://raw.githubusercontent.com/Matheussandi/virtual-catalog/main/docs/test-recordings/catalog-e2e.mp4
-
-Regravar: `npm run test:e2e:video`
-
 https://github.com/user-attachments/assets/e80b0b53-c5e8-4b31-b341-ede9c7a82bb5
+
+Regravar localmente: `npm run test:e2e:video` → gera `docs/test-recordings/catalog-e2e.mp4`. Para atualizar o player acima, arraste esse MP4 no editor web do README no GitHub e substitua a URL pela nova (detalhes em [`docs/test-recordings/README.md`](docs/test-recordings/README.md)).
+
 
 ## Funcionalidades
 
@@ -42,7 +41,7 @@ Abra [http://localhost:3000](http://localhost:3000).
 npm run lint
 npm run build
 npm run test:e2e          # testes E2E (Playwright) + vídeo em test-results/
-npm run test:e2e:video    # idem e copia gravação para docs/test-recordings/
+npm run test:e2e:video    # gera MP4/WebM em docs/test-recordings/ (ver README da pasta)
 ```
 
 ## Estudar com o Cursor

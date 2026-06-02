@@ -1,15 +1,23 @@
 # Gravações E2E (Playwright)
 
-## Apresentação do projeto
+## Vídeo no README
 
-O vídeo exibido no [README](../../README.md) é gerado por este teste:
+O [README](../../README.md) exibe o vídeo com uma URL do GitHub (**não** com caminho relativo ao repositório):
 
-- **[catalog-e2e.mp4](./catalog-e2e.mp4)** — exibido no README (URL `raw` no GitHub)
-- **[catalog-e2e.webm](./catalog-e2e.webm)** — gravação original do Playwright
+`https://github.com/user-attachments/assets/e80b0b53-c5e8-4b31-b341-ede9c7a82bb5`
+
+O GitHub só embute MP4 no Markdown quando o arquivo é enviado pelo editor web (arrastar e soltar). Arquivos versionados em `docs/test-recordings/` servem como fonte local para esse upload.
+
+## Arquivos locais
+
+| Arquivo | Uso |
+|---------|-----|
+| [catalog-e2e.webm](./catalog-e2e.webm) | Saída original do Playwright |
+| [catalog-e2e.mp4](./catalog-e2e.mp4) | Versão para upload no README (gerada pelo script) |
 
 ### Cursor visível na gravação
 
-O Playwright grava só o conteúdo do navegador, não o ponteiro do sistema. Para a demo, o teste injeta um círculo escuro (`#pw-demo-cursor`) que acompanha `page.mouse.move` antes de cada clique — ver [`e2e/helpers/presentation.ts`](../../e2e/helpers/presentation.ts).
+O Playwright grava só o navegador. A demo injeta um círculo escuro (`#pw-demo-cursor`) antes de cada clique — ver [`e2e/helpers/presentation.ts`](../../e2e/helpers/presentation.ts).
 
 ### Ritmo da demo
 
@@ -18,15 +26,23 @@ O Playwright grava só o conteúdo do navegador, não o ponteiro do sistema. Par
 - Digitação com `pressSequentially`
 - `slowMo` no `playwright.config.ts`
 
-## Regenerar
+## Regenerar gravação
 
 ```bash
 npm run test:e2e:video
 ```
 
-Copia o `.webm` e gera o `.mp4` via [`scripts/copy-e2e-video.sh`](../../scripts/copy-e2e-video.sh).
+Isso roda os testes, copia o `.webm` e gera o `.mp4` via [`scripts/copy-e2e-video.sh`](../../scripts/copy-e2e-video.sh).
 
-## Fluxo gravado (≤ 30s)
+## Atualizar o vídeo no README
+
+1. Rode `npm run test:e2e:video`.
+2. No GitHub, edite o [README.md](../../README.md) (ícone de lápis).
+3. Arraste `docs/test-recordings/catalog-e2e.mp4` para o editor (ou use “Attach files”).
+4. O GitHub gera uma nova URL `https://github.com/user-attachments/assets/...` — use essa linha na seção **Apresentação do projeto** e apague a URL antiga.
+5. Atualize também a URL de referência neste arquivo, se mudou.
+
+## Fluxo gravado (~17s)
 
 1. Listagem do catálogo (12 produtos)
 2. Filtro por **Todas**, **Eletrônicos**, **Roupas** e **Casa**
