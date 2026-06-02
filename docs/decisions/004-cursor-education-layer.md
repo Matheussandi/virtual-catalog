@@ -16,7 +16,7 @@ Versionar no Git:
 |----------|---------|
 | Project Rules | `.cursor/rules/*.mdc` (4 exemplos de modos) |
 | Agent Skills | `.cursor/skills/*/SKILL.md` |
-| Instruções simples | `AGENTS.md` + `src/components/AGENTS.md` |
+| Convenções globais do Agent | `.cursor/rules/project-conventions.mdc` (`alwaysApply: true`) |
 | MCP exemplo | `.cursor/mcp.json.example` |
 | Guias | `docs/cursor/` |
 | ADRs | `docs/decisions/` |

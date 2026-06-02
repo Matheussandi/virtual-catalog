@@ -13,6 +13,8 @@ Demonstração automatizada (~30s): listagem, filtro em todas as categorias, cad
 
 Para gravar novamente (mais lento, com cursor visível): `npm run test:e2e:video`
 
+https://github.com/user-attachments/assets/0b93655e-80ea-4186-8e23-c99a7dc0b8d6
+
 ## Funcionalidades
 
 - Visualizar produtos em grade responsiva
@@ -55,7 +57,7 @@ npm run test:e2e:video    # idem e copia gravação para docs/test-recordings/
 | Skills | [docs/cursor/skills.md](docs/cursor/skills.md) |
 | MCP | [docs/cursor/mcp.md](docs/cursor/mcp.md) |
 | Context engineering | [docs/cursor/context-engineering.md](docs/cursor/context-engineering.md) |
-| Instruções do Agent | [AGENTS.md](AGENTS.md) |
+| Instruções do Agent | [.cursor/rules/project-conventions.mdc](.cursor/rules/project-conventions.mdc) (Always Apply) |
 
 ### Exercícios sugeridos
 

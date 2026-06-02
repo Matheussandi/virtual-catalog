@@ -8,7 +8,11 @@ alwaysApply: false
 
 ## Estrutura
 
+- `catalog/` — UI do catálogo (hooks/estado via props e callbacks)
+- `ui/` — primitivos shadcn; alterações mínimas, preferir composição em `catalog/`
 - Componentes de catálogo em `src/components/catalog/` com **named exports**
+- Props tipadas com `@/types/product`
+- Diálogos controlados (`open` / `onOpenChange`) pelo componente pai (`CatalogPage`, `ProductDetailPage`)
 - Marcar interatividade com `"use client"` apenas quando necessário (estado, eventos, hooks)
 - Reutilizar primitivos de `@/components/ui/*` (shadcn) em vez de HTML cru estilizado
 

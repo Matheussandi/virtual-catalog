@@ -5,6 +5,28 @@ alwaysApply: true
 
 # Convenções do projeto
 
+Repositório: catálogo Next.js + **laboratório Cursor** (Rules, Skills, MCP). Ao alterar `.cursor/` ou `docs/cursor/`, atualize os guias em `docs/cursor/`.
+
+## Mapa rápido
+
+| Área | Caminho |
+|------|---------|
+| Página principal | `src/app/page.tsx` → `CatalogPage` |
+| Estado em memória | `src/context/ProductsProvider.tsx` |
+| Dados iniciais | `src/data/*.seed.ts` |
+| Rules / Skills | `.cursor/rules/*.mdc`, `.cursor/skills/*/SKILL.md` |
+| Documentação | `docs/cursor/` |
+
+## Comandos
+
+```bash
+npm run dev              # http://localhost:3000
+npm run lint
+npm run build
+npm run test:e2e         # Playwright
+npm run test:e2e:video   # E2E + cópia para docs/test-recordings/
+```
+
 ## Stack
 
 - Next.js 16+ com App Router (`src/app/`)

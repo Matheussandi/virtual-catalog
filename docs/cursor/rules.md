@@ -2,14 +2,14 @@
 
 As [Project Rules](https://cursor.com/docs/context/rules) ficam em `.cursor/rules/` como arquivos `.mdc` com frontmatter YAML.
 
-> Arquivos `.md` em `.cursor/rules/` **não** são carregados como rules. Use `.mdc` ou `AGENTS.md`.
+> Arquivos `.md` em `.cursor/rules/` **não** são carregados como rules. Use apenas `.mdc`.
 
 ## Rules incluídas
 
 ### 1. `project-conventions.mdc` — Always Apply
 
 - **Modo:** Always Apply (`alwaysApply: true`)
-- **Conteúdo:** stack Next.js, PT-BR, sem API, estrutura de pastas
+- **Conteúdo:** propósito do lab, mapa de pastas, comandos npm, stack, PT-BR, sem API
 - **Quando estudar:** abra qualquer chat e veja que o Agent já conhece as restrições do projeto
 
 ### 2. `catalog-domain.mdc` — Apply Intelligently
@@ -29,15 +29,6 @@ As [Project Rules](https://cursor.com/docs/context/rules) ficam em `.cursor/rule
 - **Modo:** `globs: src/data/**`
 - **Conteúdo:** proíbe API e persistência; seeds como fonte inicial
 - **Exercício:** peça *"salvar produtos no banco"* — o Agent deve recusar ou citar ADR-003
-
-## AGENTS.md
-
-Alternativa sem frontmatter:
-
-- [AGENTS.md](../../AGENTS.md) — raiz
-- [src/components/AGENTS.md](../../src/components/AGENTS.md) — aninhado
-
-[Nested AGENTS.md](https://cursor.com/docs/context/rules#nested-agentsmd-support) aplica instruções ao trabalhar naquela pasta.
 
 ## Criar nova rule
 

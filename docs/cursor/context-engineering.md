@@ -8,14 +8,12 @@
 flowchart TB
   team[Team Rules]
   project[Project Rules .mdc]
-  agents[AGENTS.md]
   files[Arquivos @ no chat]
   skills[Skills invocadas]
   mcp[MCP tools e resources]
   user[Prompt do usuário]
   team --> project
-  project --> agents
-  agents --> files
+  project --> files
   files --> skills
   skills --> mcp
   mcp --> user
@@ -31,19 +29,17 @@ Regras da organização no dashboard Cursor. Têm precedência sobre Project e U
 
 `.cursor/rules/*.mdc` — versionadas com o Git.
 
-### 3. AGENTS.md
+Neste repositório, `project-conventions.mdc` usa `alwaysApply: true` e concentra visão geral, comandos e restrições globais. Rules com `globs` (ex.: `react-ui`, `mock-data`) entram ao editar arquivos correspondentes.
 
-Markdown simples na raiz ou subpastas.
-
-### 4. Arquivos no chat
+### 3. Arquivos no chat
 
 `@ProductCard.tsx`, `@docs/decisions/002-in-memory-state.md` — contexto pontual sem poluir rules.
 
-### 5. Skills
+### 4. Skills
 
 Playbooks sob demanda (`/catalog-crud`). O Agent pode auto-selecionar pela `description`.
 
-### 6. MCP
+### 5. MCP
 
 Ferramentas (browser, docs, APIs) quando o Agent as chama.
 
@@ -55,7 +51,9 @@ Ferramentas (browser, docs, APIs) quando o Agent as chama.
 | "Padrão só em componentes TSX" | Rule com `globs` |
 | "Como fazer deploy do catálogo" (futuro) | Skill |
 | "Abrir localhost e clicar em Filtrar" | Skill + MCP browser |
-| Onboarding rápido humano/Agent | `AGENTS.md` |
+| Onboarding e mapa do repo | `project-conventions.mdc` |
+
+O Cursor também suporta [AGENTS.md](https://cursor.com/docs/context/rules#agentsmd) na raiz ou em subpastas; neste projeto preferimos **apenas** `.mdc` para não duplicar instruções.
 
 ## Boas práticas (documentação Cursor)
 
